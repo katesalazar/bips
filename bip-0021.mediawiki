@@ -1,9 +1,12 @@
 <pre>
   BIP: 21
+  Layer: Applications
   Title: URI Scheme
   Author: Nils Schneider <nils.schneider@gmail.com>
           Matt Corallo <bip21@bluematt.me>
-  Status: Accepted
+  Comments-Summary: No comments yet.
+  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0021
+  Status: Final
   Type: Standards Track
   Created: 2012-01-29
 </pre>
@@ -55,11 +58,9 @@ The scheme component ("bitcoin:") is case-insensitive, and implementations must 
 *label: Label for that address (e.g. name of receiver)
 *address: bitcoin address
 *message: message that describes the transaction to the user ([[#Examples|see examples below]])
-*size: amount of base bitcoin units ([[#Transfer amount/size|see below]])
-*paycode: payment code (BIP-47)
 *(others): optional, for future extensions
 
-==== Transfer amount/size ====
+==== Transfer amount ====
 
 If an amount is provided, it MUST be specified in decimal BTC.
 All amounts MUST contain no commas and use a period (.) as the separating character to separate whole numbers and decimal fractions.
@@ -68,11 +69,6 @@ I.e. amount=50.00 or amount=50 is treated as 50 BTC, and amount=50,000.00 is inv
 Bitcoin clients MAY display the amount in any format that is not intended to deceive the user.
 They SHOULD choose a format that is foremost least confusing, and only after that most reasonable given the amount requested.
 For example, so long as the majority of users work in BTC units, values should always be displayed in BTC by default, even if mBTC or TBC would otherwise be a more logical interpretation of the amount.
-
-==== Payment code ====
-
-If a URI provides a payment code, and if the client supports BIP-47, then the resulting transaction SHOULD construct a transaction per BIP-47 instead of using the address provided in the URI.
-
 == Rationale ==
 
 ===Payment identifiers, not person identifiers===
@@ -128,6 +124,7 @@ Characters must be URI encoded properly.
 === Bitcoin clients ===
 * Bitcoin-Qt supports the old version of Bitcoin URIs (ie without the req- prefix), with Windows and KDE integration as of commit 70f55355e29c8e45b607e782c5d76609d23cc858.
 
-==References==
-
-* [[bip-0047.mediawiki|BIP47 - Reusable Payment Codes for Hierarchical Deterministic Wallets]]
+=== Libraries ===
+* Javascript - https://github.com/bitcoinjs/bip21
+* Java - https://github.com/SandroMachado/BitcoinPaymentURI
+* Swift - https://github.com/SandroMachado/BitcoinPaymentURISwift
